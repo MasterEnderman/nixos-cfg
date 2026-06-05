@@ -11,7 +11,7 @@
       self.nixosModules.niri
       self.nixosModules.preservation
       self.nixosModules.kernel
-      inputs.disko.nixosModules.disko
+      inputs.disko.nixosModules.diskoConfigurations
       inputs.home-manager.nixosModules.home-manager
       {
         networking.hostName = "hp-probook";
