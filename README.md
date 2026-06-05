@@ -1,4 +1,4 @@
-# nixos-config
+# nixos-cfg
 
 NixOS configuration using flake-parts, import-tree, disko, preservation, and noctalia-shell.
 
@@ -70,7 +70,7 @@ git clone https://github.com/MasterEnderman/nixos-cfg /mnt/etc/nixos
 > ⚠️ This **wipes `/dev/nvme0n1` completely**. Double-check the device path in `modules/hosts/hp-probook/disko.nix` matches your actual disk before running this.
 
 ```bash
-nix run github:nix-community/disko -- \
+nix --extra-experimental-features "nix-command flakes" run github:nix-community/disko -- \
   --mode destroy,format,mount \
   /mnt/etc/nixos/modules/hosts/hp-probook/disko.nix
 ```
