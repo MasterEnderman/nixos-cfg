@@ -1,6 +1,6 @@
 {lib, ...}: {
   options.flake.homeModules = lib.mkOption {
-    type = lib.types.attrsOf lib.types.raw;
+    type = lib.types.lazyAttrsOf lib.types.deferredModule;
     default = {};
   };
 }
