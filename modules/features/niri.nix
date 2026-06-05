@@ -1,12 +1,8 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   flake.nixosModules.niri = {pkgs, ...}: {
     programs.niri = {
       enable = true;
-      package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
+      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
     };
     services.greetd = {
       enable = true;
