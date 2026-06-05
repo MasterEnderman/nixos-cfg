@@ -32,5 +32,9 @@ sudo nixos-install --flake .#yourhost
 ### 6. Set user password
 ```bash
 nixos-enter --root /mnt -c 'passwd youruser'
+```
+
+### 7. Reboot
+```bash
 reboot
 ```
