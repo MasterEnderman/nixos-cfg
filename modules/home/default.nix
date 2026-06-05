@@ -4,7 +4,7 @@
       username      = "enderman";
       homeDirectory = "/home/enderman";
       stateVersion  = "25.05";
-      packages      = with pkgs; [ foot fuzzel ];
+      packages      = with pkgs; [ foot fastfetch ];
     };
 
     programs.noctalia-shell = {
