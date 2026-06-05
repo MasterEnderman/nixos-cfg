@@ -72,7 +72,7 @@ git clone https://github.com/MasterEnderman/nixos-cfg /mnt/etc/nixos
 ```bash
 nix --extra-experimental-features "nix-command flakes" run github:nix-community/disko -- \
   --mode destroy,format,mount \
-  /mnt/etc/nixos/modules/hosts/hp-probook/disko.nix
+  /mnt/etc/nixos/modules/hosts/hp-probook/_disko.nix
 ```
 
 This creates:
@@ -87,7 +87,7 @@ This creates:
 
 ```bash
 nixos-generate-config --root /mnt --show-hardware-config \
-  > /mnt/etc/nixos/modules/hosts/hp-probook/hardware-configuration.nix
+  > /mnt/etc/nixos/modules/hosts/hp-probook/_hardware-configuration.nix
 ```
 
 Review the output before saving — make sure the initrd kernel modules look correct for your hardware.

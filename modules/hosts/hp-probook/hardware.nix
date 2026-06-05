@@ -1,8 +1,8 @@
 {self, ...}: {
   flake.nixosModules.hardware-hp-probook = {...}: {
     imports = [
-      ./hardware-configuration.nix
-      ./disko.nix
+      ./_hardware-configuration.nix
+      ./_disko.nix
     ];
   };
 }
