@@ -1,9 +1,12 @@
 {inputs, ...}: {
   flake.nixosModules.niri = {pkgs, ...}: {
+    nixpkgs.overlays = [inputs.niri.overlays.niri];
+
     programs.niri = {
       enable = true;
-      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
+      package = pkgs.niri-stable;
     };
+
     services.greetd = {
       enable = true;
       settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
