@@ -25,7 +25,7 @@
 
         my.nixos.kernel = {
           enable = true;
-          variant = "cachyos-bore";
+          variant = "linuxPackages-cachyos-bore";
         };
 
         home-manager = {
