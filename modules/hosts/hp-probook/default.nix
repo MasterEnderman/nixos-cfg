@@ -1,4 +1,8 @@
-{ self, inputs, ... }: {
+{
+  self,
+  inputs,
+  ...
+}: {
   flake.nixosConfigurations.hp-probook = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
@@ -12,21 +16,27 @@
       {
         networking.hostName = "hp-probook";
 
-        boot.initrd.luks.devices."cryptroot".device =
-          "/dev/disk/by-partlabel/disk-main-luks";
+        fileSystems."/persist".neededForBoot = true;
+
+        boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-partlabel/disk-main-luks";
 
         my.nixos.impermanence.enable = true;
 
         my.nixos.kernel = {
-          enable  = true;
+          enable = true;
           variant = "cachyos-bore";
         };
 
         home-manager = {
-          useGlobalPkgs   = true;
+          useGlobalPkgs = true;
           useUserPackages = true;
-          sharedModules   = [ inputs.noctalia.homeModules.default ];
-          users.enderman  = { imports = [ self.homeModules.enderman ]; };
+          sharedModules = [inputs.noctalia.homeModules.default];
+          users.enderman = {imports = [self.homeModules.enderman];};
+        };
+
+        users.users.enderman = {
+          isNormalUser = true;
+          extraGroups = ["wheel" "networkmanager" "video" "audio"];
         };
       }
     ];

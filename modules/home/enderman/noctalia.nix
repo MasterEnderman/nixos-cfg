@@ -1,10 +1,10 @@
-{ ... }: {
-  flake.homeModules.enderman = { ... }: {
+{...}: {
+  flake.homeModules.enderman = {...}: {
     programs.noctalia-shell = {
-      enable   = true;
+      enable = true;
       settings = {
         colorSchemes.predefinedScheme = "Noctalia (default)";
-        general.telemetryEnabled      = false;
+        general.telemetryEnabled = false;
       };
     };
   };

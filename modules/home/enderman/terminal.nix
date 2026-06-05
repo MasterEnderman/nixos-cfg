@@ -1,11 +1,15 @@
-{ ... }: {
-  flake.homeModules.enderman = { pkgs, lib, ... }: {
-    home.packages = with pkgs; [ fastfetch pfetch-rs ];
+{...}: {
+  flake.homeModules.enderman = {
+    pkgs,
+    lib,
+    ...
+  }: {
+    home.packages = with pkgs; [fastfetch pfetch-rs];
 
     home.sessionVariables.TERMINAL = "foot";
 
     programs.foot = {
-      enable   = true;
+      enable = true;
       settings.main.font = "monospace:size=11";
     };
 

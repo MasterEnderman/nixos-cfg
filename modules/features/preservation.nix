@@ -1,6 +1,11 @@
-{ ... }: {
-  flake.nixosModules.preservation = { inputs, config, lib, ... }: {
-    imports = [ inputs.preservation.nixosModules.preservation ];
+{...}: {
+  flake.nixosModules.preservation = {
+    inputs,
+    config,
+    lib,
+    ...
+  }: {
+    imports = [inputs.preservation.nixosModules.preservation];
 
     options.my.nixos.impermanence = {
       enable = lib.mkEnableOption "tmpfs root with preservation";
@@ -11,7 +16,11 @@
         enable = true;
         preserveAt."/persist" = {
           files = [
-            { file = "/etc/machine-id"; inInitrd = true; how = "symlink"; }
+            {
+              file = "/etc/machine-id";
+              inInitrd = true;
+              how = "symlink";
+            }
             "/etc/ssh/ssh_host_ed25519_key"
             "/etc/ssh/ssh_host_ed25519_key.pub"
           ];
