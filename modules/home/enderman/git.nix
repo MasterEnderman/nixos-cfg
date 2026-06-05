@@ -2,8 +2,8 @@
   flake.homeModules.enderman = {...}: {
     programs.git = {
       enable = true;
-      userName = "MasterEnderman";
-      userEmail = "xxmr.endermanxx@gmail.com";
+      settings.user.name = "MasterEnderman";
+      settings.user.email = "xxmr.endermanxx@gmail.com";
     };
   };
 }
