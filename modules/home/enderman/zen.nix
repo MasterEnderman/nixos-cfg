@@ -1,18 +1,17 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  ...
-}: let
-  extension = shortId: guid: {
-    name = guid;
-    value = {
-      install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${shortId}/latest.xpi";
-      installation_mode = "normal_installed";
+{inputs, ...}: {
+  flake.homeModules.enderman = {
+    pkgs,
+    lib,
+    ...
+  }: let
+    extension = shortId: guid: {
+      name = guid;
+      value = {
+        install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${shortId}/latest.xpi";
+        installation_mode = "normal_installed";
+      };
     };
-  };
-in {
-  flake.homeModules.enderman = {...}: {
+  in {
     home.packages = [
       (
         pkgs.wrapFirefox
