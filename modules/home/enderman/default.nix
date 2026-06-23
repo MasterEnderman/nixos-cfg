@@ -1,5 +1,7 @@
 {inputs, ...}: {
   flake.homeModules.enderman = {pkgs, ...}: {
+    imports = [ inputs.noctalia.homeModules.default ];
+
     home = {
       username = "enderman";
       homeDirectory = "/home/enderman";

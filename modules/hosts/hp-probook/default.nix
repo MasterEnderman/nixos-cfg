@@ -30,7 +30,6 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          sharedModules = [inputs.noctalia.homeModules.default];
           users.enderman = {imports = [self.homeModules.enderman];};
         };
 
