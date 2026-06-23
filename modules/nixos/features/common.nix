@@ -1,48 +1,64 @@
-# modules/home/enderman/terminal.nix
+# modules/nixos/features/common.nix
 {
-  pkgs,
+  config,
   lib,
+  pkgs,
   ...
 }: {
   # ═══════════════════════════════════════════════════════════
-  # TERMINAL PACKAGES
-  # Fast system info tools
+  # BOOT & HARDWARE
   # ═══════════════════════════════════════════════════════════
-  home.packages = with pkgs; [
-    fastfetch # Modern, colorful system info
-    pfetch-rs # Rust rewrite of pfetch (fast)
-  ];
-
-  # ═══════════════════════════════════════════════════════════
-  # DEFAULT TERMINAL SETTING
-  # Sets $TERMINAL variable for other apps
-  # ═══════════════════════════════════════════════════════════
-  home.sessionVariables = {
-    TERMINAL = "foot";
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    initrd.systemd.enable = true;
   };
 
   # ═══════════════════════════════════════════════════════════
-  # FOOT TERMINAL EMULATOR CONFIGURATION
-  # Light and fast Wayland terminal
+  # LOCALIZATION
   # ═══════════════════════════════════════════════════════════
-  programs.foot = {
-    enable = true;
+  time.timeZone = "Europe/Berlin";
+  i18n.defaultLocale = "en_US.UTF-8";
 
-    settings = {
-      main = {
-        font = "monospace:size=11";
-      };
+  # ═══════════════════════════════════════════════════════════
+  # GRAPHICS & AUDIO
+  # ═══════════════════════════════════════════════════════════
+  hardware = {
+    graphics.enable = true;
+    bluetooth.enable = true;
+  };
+
+  # ═══════════════════════════════════════════════════════════
+  # SYSTEM SERVICES
+  # ═══════════════════════════════════════════════════════════
+  services = {
+    dbus.enable = true;
+    upower.enable = true;
+    power-profiles-daemon.enable = true;
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
     };
+
+    polkit.enable = true;
+    xdg.portal = {
+      enable = true;
+      wlr.enable = true;
+    };
+
+    networking.networkmanager.enable = true;
   };
 
   # ═══════════════════════════════════════════════════════════
-  # BASH SHELL CUSTOMIZATION
+  # GLOBAL NIX SETTINGS
   # ═══════════════════════════════════════════════════════════
-  programs.bash = {
-    enable = true;
-
-    bashrcExtra = ''
-      pfetch
-    '';
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    auto-optimise-store = true;
   };
+
+  nixpkgs.config.allowUnfree = true;
+  system.stateVersion = "25.05";
 }
