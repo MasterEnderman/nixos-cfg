@@ -17,9 +17,13 @@
       {
         networking.hostName = "hp-probook";
 
+        fileSystems."/nix".neededForBoot = true;
         fileSystems."/persist".neededForBoot = true;
 
-        boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-partlabel/disk-main-luks";
+        boot.initrd.luks.devices."cryptroot" = {
+          device = "/dev/disk/by-partlabel/disk-main-luks";
+          allowDiscards = true;
+        };
 
         my.nixos.impermanence.enable = true;
 
