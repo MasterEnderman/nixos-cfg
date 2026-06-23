@@ -28,9 +28,14 @@
         };
 
         home-manager = {
-          useGlobalPkgs = true;
+          useGlobalPkgs   = true;
           useUserPackages = true;
-          users.enderman = {imports = [self.homeModules.enderman];};
+          users.enderman  = {
+            imports = [
+              self.homeModules.enderman
+              inputs.noctalia.homeModules.default
+            ];
+          };
         };
 
         users.users.enderman = {
