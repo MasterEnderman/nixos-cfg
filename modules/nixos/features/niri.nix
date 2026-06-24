@@ -6,25 +6,30 @@
   config,
   ...
 }: {
+  imports = [
+    inputs.niri.nixosModules.niri
+  ];
+
   # ═══════════════════════════════════════════════════════════
-  # OPTIONS: Enable Niri
-  # ═══════════════════════════════════════════════════════════
+  # OPTIONS: Enable Niri and choose variant
+  # ═════════════──────────────────────────────────────────────
   options.my.nixos.niri = {
     enable = lib.mkEnableOption "niri wayland compositor";
     variant = lib.mkOption {
       type = lib.types.enum ["stable" "unstable"];
       default = "stable";
+      description = "Which Niri variant to use (stable or bleeding edge)";
     };
   };
 
+  # ═══════════════════════════════════════════════════════════
+  # CONFIGURATION
+  # ═══════════════════════════════════════════════════════════
   config = lib.mkIf config.my.nixos.niri.enable {
-    # 1. Overlay & Binary Cache (Automatically enabled by the module usually, but explicit is safe)
+    # 1. Overlay (Required to get niri-stable/unstable packages)
     nixpkgs.overlays = [inputs.niri.overlays.niri];
 
-    # Enable the NixOS module which auto-enables the Cachix cache
-    imports = [inputs.niri.nixosModules.niri];
-
-    # 2. Select Package
+    # 2. Enable Compositor & Select Package
     programs.niri = {
       enable = true;
       package =
@@ -33,7 +38,7 @@
         else pkgs.niri-unstable;
     };
 
-    # 3. Login Manager
+    # 3. Login Manager (Autologin)
     services.greetd = {
       enable = true;
       settings = {
