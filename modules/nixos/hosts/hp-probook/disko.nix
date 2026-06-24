@@ -1,5 +1,9 @@
 # modules/nixos/hosts/hp-probook/disko.nix
-{pkgs, ...}: {
+{inputs, ...}: {
+  imports = [
+    inputs.disko.nixosModules.disko
+  ];
+
   # ═══════════════════════════════════════════════════════════
   # DISK LAYOUT VIA DISKO
   # Creates: EFI partition → LUKS → Btrfs subvolumes (/@, /persist, /swap)
