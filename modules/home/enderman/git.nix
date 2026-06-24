@@ -12,7 +12,7 @@
     enable = true;
 
     # Configuration via extraConfig (attribute set or list)
-    extraConfig = {
+    settings = {
       user.name = "MasterEnderman";
       user.email = "xxmr.endermanxx@gmail.com";
 
