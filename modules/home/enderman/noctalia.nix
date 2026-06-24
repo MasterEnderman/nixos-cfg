@@ -1,21 +1,11 @@
 # modules/home/enderman/noctalia.nix
 {
-  inputs,
   pkgs,
+  lib,
   ...
 }: {
-  imports = [
-    inputs.noctalia.homeModules.default
-  ];
-
-  # ═════════════──────────────────────────────────────────────
-  # NOCTALIA CONFIGURATION
-  # Theme and display settings
-  # ═══════════════════════════════════════════════════════════
   programs.noctalia = {
     enable = true;
-
-    # Settings structure matches ~/.config/noctalia/settings.json
     settings = {
       theme = {
         mode = "dark";

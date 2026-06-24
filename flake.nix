@@ -90,7 +90,6 @@
             inputs,
             ...
           }: {
-            _module.args = {inherit inputs;};
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
@@ -99,7 +98,10 @@
               lib,
               ...
             }: {
-              imports = [./modules/home/enderman];
+              imports = [
+                inputs.noctalia.homeModules.default
+                ./modules/home/enderman
+              ];
 
               home.username = "enderman";
               home.homeDirectory = "/home/enderman";
