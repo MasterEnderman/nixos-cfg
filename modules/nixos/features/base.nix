@@ -6,6 +6,7 @@
     ./niri.nix
     ./noctalia.nix
     ./preservation.nix
+    ./zen.nix
   ];
   # ═══════════════════════════════════════════════════════════
   # DEFAULT USER ACCOUNT (Shared across all hosts)
