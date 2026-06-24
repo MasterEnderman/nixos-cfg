@@ -82,6 +82,7 @@
           ./modules/nixos/features/base.nix
 
           # 3. Global Home Manager Setup (Shared across ALL machines)
+          inputs.home-manager.nixosModules.home-manager
           ({lib, ...}: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
