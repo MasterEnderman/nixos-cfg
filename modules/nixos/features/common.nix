@@ -42,7 +42,6 @@
       pulse.enable = true;
     };
 
-    polkit.enable = true;
     xdg.portal = {
       enable = true;
       wlr.enable = true;
@@ -50,6 +49,7 @@
   };
 
   networking.networkmanager.enable = true;
+  security.polkit.enable = true;
 
   # ═══════════════════════════════════════════════════════════
   # GLOBAL NIX SETTINGS
