@@ -83,7 +83,14 @@
 
           # 3. Global Home Manager Setup (Shared across ALL machines)
           inputs.home-manager.nixosModules.home-manager
-          ({lib, ...}: {
+          ({
+            lib,
+            config,
+            pkgs,
+            inputs,
+            ...
+          }: {
+            _module.args = {inherit inputs;};
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
