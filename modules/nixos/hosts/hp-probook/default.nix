@@ -13,10 +13,6 @@
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
-
-    ../../features/common.nix
-    ../../features/noctalia.nix
-    ../../features/preservation.nix
   ];
 
   # ═══════════════════════════════════════════════════════════

@@ -1,5 +1,13 @@
 # modules/nixos/features/base.nix
 {lib, ...}: {
+  imports = [
+    ./common.nix
+    ./git.nix
+    ./kernel.nix
+    ./niri.nix
+    ./noctalia.nix
+    ./preservation.nix
+  ];
   # ═══════════════════════════════════════════════════════════
   # DEFAULT USER ACCOUNT (Shared across all hosts)
   # Change password via: echo 'newpass' | sudo nixos-rebuild switch --set-option users.users.enderman.hashedPassword '...'
