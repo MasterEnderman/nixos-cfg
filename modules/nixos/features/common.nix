@@ -47,9 +47,9 @@
       enable = true;
       wlr.enable = true;
     };
-
-    networking.networkmanager.enable = true;
   };
+
+  networking.networkmanager.enable = true;
 
   # ═══════════════════════════════════════════════════════════
   # GLOBAL NIX SETTINGS
