@@ -1,7 +1,6 @@
 # modules/nixos/features/preservation.nix
 {
   inputs,
-  config,
   lib,
   pkgs,
   config,
