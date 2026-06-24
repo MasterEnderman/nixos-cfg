@@ -3,6 +3,7 @@
   inputs,
   pkgs,
   lib,
+  config,
   ...
 }: {
   # Define options for flexibility across hosts
