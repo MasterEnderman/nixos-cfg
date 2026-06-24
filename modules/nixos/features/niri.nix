@@ -7,12 +7,6 @@
   ...
 }: {
   # ═══════════════════════════════════════════════════════════
-  # IMPORT NIRI OVERLAY
-  # Gets access to 'niri-stable' and 'niri-unstable'
-  # ═══════════════════════════════════════════════════════════
-  nixpkgs.overlays = [inputs.niri.overlays.niri];
-
-  # ═══════════════════════════════════════════════════════════
   # OPTIONS: Enable Niri and choose variant
   # ═══════════════════════════════════════════════════════════
   options.my.nixos.niri = {
@@ -24,10 +18,14 @@
     };
   };
 
+  # ═══════════════════════════════════════════════════════════
+  # CONFIGURATION
+  # ═══════════════════════════════════════════════════════════
   config = lib.mkIf config.my.nixos.niri.enable {
-    # ═══════════════════════════════════════════════════════════
-    # ENABLE NIRI COMPOSITOR
-    # ═══════════════════════════════════════════════════════════
+    # 1. Import Niri Overlay
+    nixpkgs.overlays = [inputs.niri.overlays.niri];
+
+    # 2. Enable Niri Compositor
     programs.niri = {
       package =
         if config.my.nixos.niri.variant == "stable"
@@ -76,10 +74,7 @@
       };
     };
 
-    # ═══════════════════════════════════════════════════════════
-    # LOGIN MANAGER (Greetd + TUI Greet with AUTOLOGIN)
-    # Boots directly into Niri Session as 'enderman' after LUKS decryption
-    # ═══════════════════════════════════════════════════════════
+    # 3. Login Manager
     services.greetd = {
       enable = true;
       settings = {
