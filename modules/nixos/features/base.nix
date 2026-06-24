@@ -2,7 +2,6 @@
 {lib, ...}: {
   imports = [
     ./common.nix
-    ./git.nix
     ./kernel.nix
     ./niri.nix
     ./noctalia.nix
