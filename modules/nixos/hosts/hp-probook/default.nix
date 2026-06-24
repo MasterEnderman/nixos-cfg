@@ -1,15 +1,27 @@
 # modules/nixos/hosts/hp-probook/default.nix
-{...}: [
-  ./hardware-configuration.nix
-  ./disko.nix
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  # ═══════════════════════════════════════════════════════════
+  # IMPORTS LIST
+  # This returns a list of modules to be loaded for this host
+  # ═══════════════════════════════════════════════════════════
+  imports = [
+    ./hardware-configuration.nix
+    ./disko.nix
 
-  # Shared Features
-  ../../features/common.nix
-  ../../features/noctalia.nix
-  ../../features/preservation.nix
+    ../../features/common.nix
+    ../../features/noctalia.nix
+    ../../features/preservation.nix
+  ];
 
-  # Host Specifics
-  {
-    networking.hostName = "hp-probook";
-  }
-]
+  # ═══════════════════════════════════════════════════════════
+  # HOST-SPECIFIC CONFIGURATION
+  # Overrides and unique settings
+  # ═══════════════════════════════════════════════════════════
+  networking.hostName = "hp-probook";
+}

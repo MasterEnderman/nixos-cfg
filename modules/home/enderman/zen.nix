@@ -4,8 +4,7 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   # Helper for extensions
   mkExtension = shortId: guid: {
     name = guid;

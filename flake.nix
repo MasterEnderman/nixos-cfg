@@ -23,7 +23,6 @@
 
     preservation = {
       url = "github:nix-community/preservation";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-cachyos-kernel = {
@@ -71,9 +70,8 @@
       nixpkgs.lib.nixosSystem {
         inherit system;
 
-        # Pass inputs to ALL modules so they can access overlays/packages
         specialArgs = {
-          inherit inputs pkgs;
+          inherit inputs;
         };
 
         modules = [
