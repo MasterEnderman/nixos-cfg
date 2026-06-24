@@ -8,20 +8,18 @@
   # NIRI CONFIGURATION (Home Manager)
   # This is where keybinds and spawns live
   # ═══════════════════════════════════════════════════════════
-  programs.niri = {
-    enable = true;
-
+  programs.niri.settings = {
     # Spawn noctalia-shell at startup
-    settings.spawn-at-startup = [
+    spawn-at-startup = [
       {command = ["noctalia-shell"];}
     ];
 
     # Keyboard Layout
-    settings.input.keyboard.xkb.layout = "de";
-    settings.layout.gaps = 8;
+    input.keyboard.xkb.layout = "de";
+    layout.gaps = 8;
 
     # Keybinds
-    settings.binds = {
+    binds = {
       # Terminal
       "Mod+Return".action.spawn = ["${lib.getExe pkgs.foot}"];
 
