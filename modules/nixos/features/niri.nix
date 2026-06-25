@@ -41,11 +41,19 @@
     # 3. Login Manager (Autologin)
     services.greetd = {
       enable = true;
+
       settings = rec {
+        # Determine which binary to use based on the variant option
+        niriCmd =
+          if config.my.nixos.niri.variant == "stable"
+          then "${pkgs.niri-stable}/bin/niri-session"
+          else "${pkgs.niri-unstable}/bin/niri-session";
+
         initial_session = {
-          command = "${pkgs.niri-stable}/bin/niri-session";
+          command = niriCmd;
           user = "enderman";
         };
+
         default_session = initial_session;
       };
     };
