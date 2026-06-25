@@ -41,10 +41,12 @@
     # 3. Login Manager (Autologin)
     services.greetd = {
       enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --autologin enderman --cmd niri-session";
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.niri-stable}/bin/niri-session";
+          user = "enderman";
         };
+        default_session = initial_session;
       };
     };
   };
