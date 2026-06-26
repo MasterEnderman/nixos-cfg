@@ -2,6 +2,7 @@
 {
   pkgs,
   lib,
+  osConfig,
   ...
 }: {
   programs.noctalia = {
@@ -9,9 +10,15 @@
     settings = {
       theme = {
         mode = "dark";
-        source = "builtin";
+        source = "wallpaper";
+        wallpaper_scheme = "m3-content";
         builtin = "Catppuccin";
       };
+    };
+
+    wallpaper = {
+      enabled = true;
+      default.path = "/persist/etc/nixos/modules/nixos/hosts/${osConfig.networking.hostName}/wallpaper.png";
     };
   };
 }
