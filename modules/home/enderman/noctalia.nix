@@ -14,11 +14,11 @@
         wallpaper_scheme = "m3-content";
         builtin = "Catppuccin";
       };
-    };
 
-    wallpaper = {
-      enabled = true;
-      default.path = "/persist/etc/nixos/modules/nixos/hosts/${osConfig.networking.hostName}/wallpaper.png";
+      wallpaper = {
+        enabled = true;
+        default.path = "/persist/etc/nixos/modules/nixos/hosts/${osConfig.networking.hostName}/wallpaper.png";
+      };
     };
   };
 }
