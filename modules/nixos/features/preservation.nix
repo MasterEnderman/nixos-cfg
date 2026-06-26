@@ -37,7 +37,10 @@
         ];
 
         directories = [
-          "/etc/nixos"
+          {
+            directory = "/etc/nixos";
+            user = "enderman";
+          }
           "/etc/NetworkManager" # Network connections
           "/var/log"
           "/var/lib/nixos"
@@ -52,6 +55,7 @@
             ".local/share"
             ".local/state"
             "Downloads"
+            "MyNixOS"
             "Projects"
             "Vault"
             ".gradle"
@@ -66,7 +70,7 @@
     };
 
     systemd.tmpfiles.rules = [
-      "L+ ~/MyNixOS - - - - /persist/etc/nixos"
+      "L+ /home/enderman/MyNixOS - - - - /persist/etc/nixos"
     ];
 
     # systemd-machine-id-commit.service would fail, but it is not relevant
