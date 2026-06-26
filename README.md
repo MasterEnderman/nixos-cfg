@@ -39,7 +39,8 @@ iwctl
 sudo nix run --extra-experimental-features "nix-command flakes" \
   github:nix-community/disko -- \
   --mode destroy,format,mount \
-  --flake github:MasterEnderman/nixos-cfg#hp-probook
+  --flake github:MasterEnderman/nixos-cfg#hp-probook \
+  --yes-wipe-all-disks
 ```
 
 This creates and mounts:
@@ -64,7 +65,7 @@ git clone https://github.com/MasterEnderman/nixos-cfg.git /mnt/persist/etc/nixos
 
 ```bash
 nixos-generate-config --root /mnt --show-hardware-config \
-  > /persist/etc/nixos/modules/hosts/hp-probook/hardware-configuration.nix
+  > /mnt/persist/etc/nixos/modules/hosts/hp-probook/hardware-configuration.nix
 ```
 
 Review the output before saving — make sure the initrd kernel modules look correct for your hardware.
@@ -87,18 +88,12 @@ nixos-install --flake /mnt/etc/nixos#hp-probook --root /mnt
 
 This will ask you to set a root password at the end. Set something temporary — you can disable root login after first boot.
 
-### 8. Set the user password
-
-```bash
-nixos-enter --root /mnt -c 'passwd enderman'
-```
-
-⚠️ The default password for `enderman` user is currently `"password"` in `base.nix`. Change it immediately after first boot!
+### 8. ???
 
 ### 9. Commit the generated hardware config
 
 ```bash
-cd /persist/etc/nixos
+cd /mnt/persist/etc/nixos
 git add modules/hosts/hp-probook/hardware-configuration.nix
 git commit -m "add hp-probook hardware configuration"
 git push
