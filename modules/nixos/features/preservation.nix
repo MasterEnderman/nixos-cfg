@@ -38,6 +38,7 @@
 
         directories = [
           "/etc/nixos"
+          "/etc/NetworkManager" # Network connections
           "/var/log"
           "/var/lib/nixos"
           "/var/lib/systemd/coredump"
