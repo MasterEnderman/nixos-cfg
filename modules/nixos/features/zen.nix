@@ -24,7 +24,11 @@
     # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
     # Then go to https://addons.mozilla.org/api/v5/addons/addon/!SHORT_ID!/ to get the guid
     (extension "ublock-origin" "uBlock0@raymondhill.net")
-    # ...
+    (extension "darkreader" "addon@darkreader.org")
+    (extension "sponsorblock" "sponsorBlocker@ajay.app")
+    (extension "proton-pass" "78272b6fa58f4a1abaac99321d503a20@proton.me")
+    (extension "proton-vpn-firefox-extension" "vpn@proton.ch")
+    (extension "material-icons-for-github" "{eac6e624-97fa-4f28-9d24-c06c9b8aa713}")
   ];
 in {
   environment.systemPackages = [
@@ -40,7 +44,17 @@ in {
         );
 
         extraPolicies = {
+          # Updates & Background Services
+          AppAutoUpdate                 = false;
+          BackgroundAppUpdate           = false;
+
+          # Privacy related settings
           DisableTelemetry = true;
+          DisableFormHistory = true;
+          DisablePasswordReveal = true;
+          DisableMasterPasswordCreation = true;
+          OfferToSaveLogins = false;
+
           ExtensionSettings = builtins.listToAttrs extensions;
 
           SearchEngines = {

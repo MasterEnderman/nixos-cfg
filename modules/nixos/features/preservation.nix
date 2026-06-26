@@ -55,7 +55,6 @@
             ".local/share"
             ".local/state"
             "Downloads"
-            "MyNixOS"
             "Projects"
             "Vault"
             ".gradle"
