@@ -21,6 +21,7 @@
     # ⚠️ DANGER: Temporary Password!
     # CHANGE THIS IMMEDIATELY AFTER FIRST BOOT
     initialPassword = "password";
+    hashedPasswordFile = "/persist/passwd";
     extraGroups = [
       "wheel"
       "networkmanager"

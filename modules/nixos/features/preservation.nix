@@ -64,13 +64,12 @@
       };
     };
 
+    systemd.tmpfiles.rules = [
+      "L+ ~/MyNixOS - - - - /persist/etc/nixos"
+    ];
+
     # systemd-machine-id-commit.service would fail, but it is not relevant
     # in this specific setup for a persistent machine-id so we disable it
     systemd.suppressedSystemUnits = ["systemd-machine-id-commit.service"];
-
-    systemd.tmpfiles.rules = [
-      # Create link ~/MyNixOS -> /etc/nixos
-      "L+ /home/enderman/MyNixOS - enderman enderman - /etc/nixos"
-    ];
   };
 }

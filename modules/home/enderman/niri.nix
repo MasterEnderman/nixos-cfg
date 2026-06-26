@@ -11,7 +11,7 @@
   programs.niri.settings = {
     # Spawn noctalia-shell at startup
     spawn-at-startup = [
-      {argv = ["${pkgs.noctalia}/bin/noctalia"];}
+      {argv = ["noctalia"];}
     ];
 
     # Keyboard Layout
@@ -53,20 +53,20 @@
       "Mod+Return".action.spawn = ["${lib.getExe pkgs.foot}"];
 
       # Launcher
-      "Mod+D".action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "toggle"];
+      "Mod+D".action.spawn = ["noctalia" "ipc" "call" "launcher" "toggle"];
 
       # Session Menu
-      "Mod+Shift+E".action.spawn = ["noctalia-shell" "ipc" "call" "sessionMenu" "toggle"];
+      "Mod+Shift+E".action.spawn = ["noctalia" "ipc" "call" "sessionMenu" "toggle"];
 
       # Lock Screen
-      "Mod+Alt+L".action.spawn = ["noctalia-shell" "ipc" "call" "lockScreen" "lock"];
+      "Mod+Alt+L".action.spawn = ["noctalia" "ipc" "call" "lockScreen" "lock"];
 
       # Volume/Brightness (Passthrough to noctalia)
-      "XF86AudioRaiseVolume".action.spawn = ["noctalia-shell" "ipc" "call" "volume" "increase"];
-      "XF86AudioLowerVolume".action.spawn = ["noctalia-shell" "ipc" "call" "volume" "decrease"];
-      "XF86AudioMute".action.spawn = ["noctalia-shell" "ipc" "call" "volume" "muteOutput"];
-      "XF86MonBrightnessUp".action.spawn = ["noctalia-shell" "ipc" "call" "brightness" "increase"];
-      "XF86MonBrightnessDown".action.spawn = ["noctalia-shell" "ipc" "call" "brightness" "decrease"];
+      "XF86AudioRaiseVolume".action.spawn = ["noctalia" "ipc" "call" "volume" "increase"];
+      "XF86AudioLowerVolume".action.spawn = ["noctalia" "ipc" "call" "volume" "decrease"];
+      "XF86AudioMute".action.spawn = ["noctalia" "ipc" "call" "volume" "muteOutput"];
+      "XF86MonBrightnessUp".action.spawn = ["noctalia" "ipc" "call" "brightness" "increase"];
+      "XF86MonBrightnessDown".action.spawn = ["noctalia" "ipc" "call" "brightness" "decrease"];
     };
   };
 }
