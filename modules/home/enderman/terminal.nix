@@ -11,7 +11,7 @@
   home.packages = with pkgs; [
     fastfetch # Modern, colorful system info
     pfetch-rs # Rust rewrite of pfetch (fast)
-    btop      # TUI Taskmanager
+    btop # TUI Taskmanager
     alejandra # Nix formatter
   ];
 
